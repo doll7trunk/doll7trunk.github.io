@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>91tv-在线影视内容导航与观看指南</title>
+<meta name="description" content="91tv 是一个面向影视爱好者的内容导航与观看指南页面，整理影视分类、热门推荐、观看方式、设备支持与常见问题，帮助你快速了解在线影视内容的浏览与选择方法。">
+<meta name="keywords" content="91tv,在线影视,影视导航,影视分类,观看指南,热门影视推荐">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  background: #0d0f14;
+  color: #e8eaf0;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== 顶部导航 ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 15, 20, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1e2230;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff5f6d, #ffc371);
+  color: #1a0d0d;
+  font-size: 16px;
+  font-weight: 900;
+}
+.logo-text b {
+  color: #ff7a59;
+}
+.main-nav {
+  display: flex;
+  gap: 26px;
+  font-size: 15px;
+}
+.main-nav a {
+  color: #a9b0c2;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.main-nav a:hover {
+  color: #ffffff;
+  border-bottom-color: #ff7a59;
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #2a3040;
+  color: #e8eaf0;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ===== 首屏 ===== */
+.hero {
+  position: relative;
+  padding: 70px 0 56px;
+  background:
+    radial-gradient(900px 380px at 12% 0%, rgba(255, 95, 109, 0.22), transparent 62%),
+    radial-gradient(760px 340px at 88% 10%, rgba(94, 129, 255, 0.20), transparent 60%),
+    #0d0f14;
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 13px;
+  color: #ffb199;
+  border: 1px solid rgba(255, 122, 89, 0.45);
+  background: rgba(255, 122, 89, 0.08);
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: 42px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(120deg, #ff7a59, #ffc371);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p.lead {
+  color: #b6bccd;
+  font-size: 17px;
+  max-width: 620px;
+  margin-bottom: 28px;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #ff5f6d, #ff9a44);
+  color: #1a0d0d;
+  box-shadow: 0 8px 24px rgba(255, 95, 109, 0.28);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 95, 109, 0.36);
+}
+.btn-ghost {
+  border: 1px solid #333a4d;
+  color: #d5d9e4;
+}
+.btn-ghost:hover {
+  border-color: #ff7a59;
+  color: #ffb199;
+}
+.hero-stats {
+  display: flex;
+  gap: 34px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+.hero-stats div strong {
+  display: block;
+  font-size: 22px;
+  color: #ffffff;
+}
+.hero-stats div span {
+  font-size: 13px;
+  color: #8d94a8;
+}
+.hero-card {
+  background: linear-gradient(160deg, #161a24, #10131b);
+  border: 1px solid #232838;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+.hero-card h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-card h3::before {
+  content: "";
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background: linear-gradient(#ff5f6d, #ffc371);
+}
+.quick-list {
+  list-style: none;
+}
+.quick-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px dashed #232838;
+  font-size: 14px;
+  color: #c3c9d8;
+}
+.quick-list li:last-child {
+  border-bottom: none;
+}
+.quick-list li span.tag {
+  font-size: 12px;
+  color: #ffb199;
+  background: rgba(255, 122, 89, 0.12);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+/* ===== 通用区块 ===== */
+.section {
+  padding: 56px 0;
+}
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.section-head h2 {
+  font-size: 26px;
+  font-weight: 800;
+}
+.section-head h2 small {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #8d94a8;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+.section-head .more {
+  font-size: 14px;
+  color: #ff9a7a;
+}
+.section-head .more:hover {
+  color: #ffc371;
+}
+
+/* ===== 分类网格 ===== */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.cat-card {
+  background: #141822;
+  border: 1px solid #212736;
+  border-radius: 14px;
+  padding: 22px 20px;
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+.cat-card:hover {
+  transform: translateY(-4px);
+  border-color: #ff7a59;
+  background: #171c28;
+}
+.cat-card .icon {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.cat-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.cat-card p {
+  font-size: 13px;
+  color: #8d94a8;
+  line-height: 1.65;
+}
+
+/* ===== 推荐列表 ===== */
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.rec-card {
+  display: flex;
+  gap: 16px;
+  background: #141822;
+  border: 1px solid #212736;
+  border-radius: 14px;
+  padding: 18px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.rec-card:hover {
+  border-color: #3a4considered;
+}
+.rec-thumb {
+  flex: 0 0 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a0d0d;
+}
+.t1 { background: linear-gradient(135deg, #ff5f6d, #ffc371); }
+.t2 { background: linear-gradient(135deg, #5e81ff, #9ad0ff); }
+.t3 { background: linear-gradient(135deg, #35d0a5, #a8f0d4); }
+.t4 { background: linear-gradient(135deg, #f7b733, #fc4a1a); }
+.t5 { background: linear-gradient(135deg, #a86bff, #ffb0ff); }
+.t6 { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+.rec-body h3 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.rec-body p {
+  font-size: 13px;
+  color: #8d94a8;
+  line-height: 1.6;
+}
+.rec-body .meta {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #6f7688;
+}
+
+/* ===== 指南正文 ===== */
+.guide {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 34px;
+  align-items: start;
+}
+.article-block {
+  background: #141822;
+  border: 1px solid #212736;
+  border-radius: 16px;
+  padding: 30px 28px;
+}
+.article-block h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.article-block h3 {
+  font-size: 17px;
+  margin: 24px 0 10px;
+  color: #ffb199;
+}
+.article-block p {
+  color: #b6bccd;
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+.article-block ul {
+  margin: 0 0 14px 20px;
+  color: #b6bccd;
+  font-size: 15px;
+}
+.article-block ul li {
+  margin-bottom: 8px;
+}
+.aside-box {
+  background: #141822;
+  border: 1px solid #212736;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.aside-box h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.aside-box h3::before {
+  content: "";
+  width: 4px;
+  height: 15px;
+  border-radius: 2px;
+  background: linear-gradient(#5e81ff, #9ad0ff);
+}
+.aside-box ol,
+.aside-box ul {
+  margin-left: 18px;
+  font-size: 14px;
+  color: #a9b0c2;
+}
+.aside-box li {
+  margin-bottom: 9px;
+}
+.aside-box li b {
+  color: #e8eaf0;
+}
+
+/* ===== 设备支持 ===== */
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.device-card {
+  text-align: center;
+  background: #141822;
+  border: 1px solid #212736;
+  border-radius: 14px;
+  padding: 26px 16px;
+}
+.device-card .d-icon {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+.device-card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.device-card p {
+  font-size: 13px;
+  color: #8d94a8;
+  line-height: 1.6;
+}
+
+/* ===== FAQ ===== */
+.faq-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: #141822;
+  border: 1px solid #212736;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #e8eaf0;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: inherit;
+}
+.faq-q::after {
+  content: "+";
+  font-size: 20px;
+  color: #ff9a7a;
+  transition: transform 0.25s;
+  flex: 0 0 auto;
+}
+.faq-item.open .faq-q::after {
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-a p {
+  padding: 0 22px 20px;
+  color: #a9b0c2;
+  font-size: 14.5px;
+}
+
+/* ===== 页脚 ===== */
+.site-footer {
+  background: #0a0c11;
+  border-top: 1px solid #1c2130;
+  padding: 44px 0 26px;
+  margin-top: 20px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 34px;
+}
+.footer-brand p {
+  font-size: 13.5px;
+  color: #8d94a8;
+  margin-top: 14px;
+  max-width: 320px;
+}
+.footer-col h4 {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+.footer-col ul {
+  list-style: none;
+}
+.footer-col ul li {
+  margin-bottom: 9px;
+}
+.footer-col ul li a {
+  font-size: 13.5px;
+  color: #8d94a8;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover {
+  color: #ff9a7a;
+}
+.footer-bottom {
+  border-top: 1px solid #1c2130;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: #6f7688;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 34px;
+  }
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .guide {
+    grid-template-columns: 1fr;
+  }
+  .device-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #10131b;
+    border-bottom: 1px solid #1e2230;
+    padding: 8px 20px 16px;
+  }
+  .main-nav.show {
+    display: flex;
+  }
+  .main-nav a {
+    padding: 12px 0;
+    border-bottom: 1px solid #1a1f2c;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .hero {
+    padding: 46px 0 40px;
+  }
+  .hero h1 {
+    font-size: 27px;
+  }
+  .hero p.lead {
+    font-size: 15px;
+  }
+  .hero-stats {
+    gap: 22px;
+  }
+  .cat-grid,
+  .rec-grid,
+  .device-grid {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 40px 0;
+  }
+  .section-head h2 {
+    font-size: 21px;
+  }
+  .article-block {
+    padding: 22px 18px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">91</span>
+      <span class="logo-text">91<b>tv</b> 影视导航</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="展开导航">菜单</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#categories">内容分类</a>
+      <a href="#recommend">编辑推荐</a>
+      <a href="#guide">观看指南</a>
+      <a href="#devices">设备支持</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="hero-badge">在线影视内容导航 · 观看方法说明</span>
+        <h1>91tv：快速找到你想看的<em>在线影视内容</em></h1>
+        <p class="lead">
+          91tv 是一个面向影视爱好者的内容导航与观看指南页面。我们按题材、地区和更新节奏整理影视分类，说明常见观看方式、设备要求与注意事项，帮助你更高效地浏览、筛选和选择适合自己的内容，而不是在杂乱的信息里反复试错。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#categories">浏览内容分类</a>
+          <a class="btn btn-ghost" href="#guide">查看观看指南</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <strong>6+</strong>
+            <span>核心内容分类</span>
+          </div>
+          <div>
+            <strong>4 类</strong>
+            <span>常见观看设备</span>
+          </div>
+          <div>
+            <strong>持续更新</strong>
+            <span>分类与指南内容</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>新手快速上手</h3>
+        <ul class="quick-list">
+          <li>先确定题材偏好 <span class="tag">第 1 步</span></li>
+          <li>按地区或语言筛选 <span class="tag">第 2 步</span></li>
+          <li>查看更新与完结状态 <span class="tag">第 3 步</span></li>
+          <li>选择合适设备观看 <span class="tag">第 4 步</span></li>
+          <li>注意网络与账号安全 <span class="tag">提示</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 内容分类 -->
+  <section class="section" id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>内容分类导航<small>按照题材与形式划分，方便快速定位</small></h2>
+        <a class="more" href="#recommend">查看编辑推荐 →</a>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <div class="icon">🎬</div>
+          <h3>电影长片</h3>
+          <p>剧情、动作、科幻、悬疑等类型长片。适合按题材关键词与上映年份进行筛选。</p>
+        </article>
+        <article class="cat-card">
+          <div class="icon">📺</div>
+          <h3>剧集连载</h3>
+          <p>按季、按集更新的连续剧内容。关注更新频率与是否完结，可减少等待成本。</p>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🎞️</div>
+          <h3>短剧与短片</h3>
+          <p>单集时长较短、节奏紧凑的内容形式，适合碎片时间观看。</p>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🌸</div>
+          <h3>动漫动画</h3>
+          <p>包括电视动画、剧场版与网络动画，可按地区与受众年龄段区分。</p>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🌏</div>
+          <h3>地区与语言</h3>
+          <p>按华语、日韩、欧美等地区标签浏览，配合字幕语言偏好做进一步筛选。</p>
+        </article>
+        <article class="cat-card">
+          <div class="icon">📈</div>
+          <h3>热度与榜单</h3>
+          <p>依据播放热度、讨论度整理的参考榜单，用于发现近期关注度较高的内容。</p>
+        </article>
+        <article class="cat-card">
+          <div class="icon">🆕</div>
+          <h3>近期更新</h3>
+          <p>集中呈现新上线或刚更新的条目，适合已经追完旧内容、想找新目标的用户。</p>
+        </article>
+        <article class="cat-card">
+          <div class="icon">⭐</div>
+          <h3>高分口碑</h3>
+          <p>以观众评价为主要参考的整理方向，帮助降低选片时的试错概率。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 编辑推荐 -->
+  <section class="section" id="recommend">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>编辑推荐方向<small>按不同观看需求整理的选片思路</small></h2>
+        <a class="more" href="#guide">阅读选片方法 →</a>
+      </div>
+      <div class="rec-grid">
+        <article class="rec-card">
+          <div class="rec-thumb t1">剧</div>
+          <div class="rec-body">
+            <h3>通勤碎片时间</h3>
+            <p>优先选择单集 20 分钟以内、剧情线清晰的短剧或单元剧，随时暂停不影响理解。</p>
+            <div class="meta">适合：地铁、午休</div>
+          </div>
+        </article>
+        <article class="rec-card">
+          <div class="rec-thumb t2">影</div>
+          <div class="rec-body">
+            <h3>周末完整观影</h3>
+            <p>选择时长 90 分钟以上的电影长片，建议提前确认字幕语言与画质选项。</p>
+            <div class="meta">适合：居家大屏</div>
+          </div>
+        </article>
+        <article class="rec-card">
+          <div class="rec-thumb t3">漫</div>
+          <div class="rec-body">
+            <h3>轻松解压向</h3>
+            <p>喜剧、日常、治愈类动画与轻喜剧剧集，节奏舒缓，适合放松时观看。</p>
+            <div class="meta">适合：睡前放松</div>
+          </div>
+        </article>
+        <article class="rec-card">
+          <div class="rec-thumb t4">悬</div>
+          <div class="rec-body">
+            <h3>烧脑推理向</h3>
+            <p>悬疑、犯罪、推理题材。建议连续观看，避免因中断而遗漏关键线索。</p>
+            <div class="meta">适合：专注观看</div>
+          </div>
+        </article>
+        <article class="rec-card">
+          <div class="rec-thumb t5">家</div>
+          <div class="rec-body">
+            <h3>家庭共赏</h3>
+            <p>选择题材温和、内容适龄的作品，观看前可先查看简介与内容提示。</p>
+            <div class="meta">适合：多人同看</div>
+          </div>
+        </article>
+        <article class="rec-card">
+          <div class="rec-thumb t6">学</div>
+          <div class="rec-body">
+            <h3>语言学习辅助</h3>
+            <p>选择带双语字幕的内容，配合重复观看与跟读，提升语感与听力。</p>
+            <div class="meta">适合：学习场景</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 观看指南 -->
+  <section class="section" id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>观看指南与选择方法<small>从筛选到播放的完整思路说明</small></h2>
+      </div>
+      <div class="guide">
+        <article class="article-block">
+          <h2>如何更高效地找到想看的影视内容</h2>
+          <p>
+            面对数量庞大的在线影视资源，真正影响体验的往往不是“有没有”，而是“怎么快速筛掉不合适的”。一个实用的做法是先确定自己的观看场景，再决定筛选条件。比如通勤时更适合短时长内容，周末大屏观看则更适合长片，这两种场景对应的筛选维度完全不同。
+          </p>
+
+          <h3>第一步：明确观看场景与时长</h3>
+          <p>
+            先问自己三个问题：这次能看多久、用哪种设备、是否会被频繁打断。答案会直接决定你该选电影长片、连载剧集还是短剧。时长与场景匹配，是减少“看了十分钟就想退出”的最有效方法。
+          </p>
+
+          <h3>第二步：用分类标签逐层缩小范围</h3>
+          <p>
+            建议按“题材 → 地区 → 年份 → 状态”的顺序逐层筛选。先定题材能保证方向正确，再叠加地区与年份可以快速排除大量无关条目，最后用“连载中 / 已完结”决定是否值得现在开始追。
+          </p>
+          <ul>
+            <li><b>题材：</b>剧情、动作、科幻、悬疑、喜剧、动画等，先锁定大类。</li>
+            <li><b>地区：</b>华语、日韩、欧美等，影响叙事节奏与语言习惯。</li>
+            <li><b>年份：</b>新作信息更贴近当下讨论，老片则更适合补看经典。</li>
+            <li><b>状态：</b>已完结适合一口气看完，连载中适合长期追更。</li>
+          </ul>
+
+          <h3>第三步：参考简介与评价，而不是只看标题</h3>
+          <p>
+            标题往往带有引导性，而简介与观众评价更能反映实际内容。建议重点看简介中的题材关键词、主要人物设定和整体基调，再结合评价中反复提到的优缺点做判断。如果多条评价都指向同一个问题，通常说明这个问题具有普遍性。
+          </p>
+
+          <h3>第四步：确认播放条件</h3>
+          <p>
+            在正式开始前，先确认网络是否稳定、设备是否支持当前播放方式、字幕语言是否符合习惯。很多“体验差”其实来自播放前的准备不足，而不是内容本身的问题。
+          </p>
+
+          <h3>需要注意的几点</h3>
+          <ul>
+            <li>合理安排观看时间，避免长时间连续观看影响休息。</li>
+            <li>留意内容分级与题材提示，家庭观看时尤其需要提前确认。</li>
+            <li>不随意在来源不明的页面输入账号、密码或支付信息。</li>
+            <li>对“必须下载特定插件才能观看”等提示保持警惕。</li>
+          </ul>
+        </article>
+
+        <aside>
+          <div class="aside-box">
+            <h3>选片检查清单</h3>
+            <ol>
+              <li><b>时长</b>是否匹配当前可支配时间</li>
+              <li><b>题材</b>是否符合当下心情</li>
+              <li><b>状态</b>是否已完结，能否连续看完</li>
+              <li><b>字幕</b>语言是否看得懂</li>
+              <li><b>设备</b>是否支持顺畅播放</li>
+            </ol>
+          </div>
+          <div class="aside-box">
+            <h3>常见筛选维度</h3>
+            <ul>
+              <li>题材类型</li>
+              <li>地区与语言</li>
+              <li>上映或上线年份</li>
+              <li>单集时长</li>
+              <li>连载状态</li>
+              <li>观众评价倾向</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设备支持 -->
+  <section class="section" id="devices">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>设备与播放环境<small>不同终端的观看特点说明</small></h2>
+      </div>
+      <div class="device-grid">
+        <article class="device-card">
+          <div class="d-icon">💻</div>
+          <h3>电脑浏览器</h3>
+          <p>屏幕较大、操作灵活，适合长时间观看与多标签筛选，注意浏览器版本保持更新。</p>
+        </article>
+        <article class="device-card">
+          <div class="d-icon">📱</div>
+          <h3>手机与平板</h3>
+          <p>便携性强，适合碎片时间。建议在稳定 Wi-Fi 环境下观看，减少流量消耗。</p>
+        </article>
+        <article class="device-card">
+          <div class="d-icon">📺</div>
+          <h3>智能电视</h3>
+          <p>大屏沉浸感更好，适合家庭共赏。操作以遥控器为主，筛选效率相对较低。</p>
+        </article>
+        <article class="device-card">
+          <div class="d-icon">🎧</div>
+          <h3>耳机与音响</h3>
+          <p>对白密集或氛围感强的作品，搭配耳机能明显提升细节听感与沉浸度。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>常见问题<small>关于浏览、筛选与观看的高频疑问</small></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" type="button">91tv 是什么类型的内容页面？</button>
+          <div class="faq-a">
+            <p>91tv 在本页面中定位为面向影视爱好者的内容导航与观看指南，主要提供分类整理、选片方法、设备说明与注意事项等信息，帮助用户更高效地浏览和选择在线影视内容。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">怎样快速找到适合自己的内容？</button>
+          <div class="faq-a">
+            <p>建议按“场景 → 题材 → 地区 → 状态”的顺序筛选。先确定这次能看多久、用什么设备，再逐层叠加条件，可以大幅减少无效浏览时间。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">连载中和已完结应该怎么选？</button>
+          <div class="faq-a">
+            <p>如果希望一口气看完、不被更新节奏打断，优先选择已完结内容；如果喜欢持续追更、参与讨论，连载中的作品更合适。两者没有优劣，取决于你的观看习惯。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">观看时需要注意哪些安全问题？</button>
+          <div class="faq-a">
+            <p>不要在来源不明的页面输入账号、密码或支付信息；对要求下载不明插件、开启高风险权限的提示保持警惕；同时注意合理安排观看时长，保护视力与作息。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">字幕语言会影响观看体验吗？</button>
+          <div class="faq-a">
+            <p>会有明显影响。字幕语言与自身语言能力不匹配时，容易分散注意力。建议优先选择熟悉的字幕语言，学习场景下可考虑双语字幕并配合重复观看。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button">页面内容会持续更新吗？</button>
+          <div class="faq-a">
+            <p>分类结构与指南内容会根据实际使用反馈进行调整与补充。具体的影视条目信息以你实际访问的平台页面为准，本页面主要负责提供浏览思路与筛选方法。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <span class="logo-mark">91</span>
+          <span class="logo-text">91<b>tv</b> 影视导航</span>
+        </a>
+        <p>面向影视爱好者的内容导航与观看指南，整理分类结构、选片方法与设备说明，帮助更高效地浏览在线影视内容。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容分类</h4>
+        <ul>
+          <li><a href="#categories">电影长片</a></li>
+          <li><a href="#categories">剧集连载</a></li>
+          <li><a href="#categories">短剧短片</a></li>
+          <li><a href="#categories">动漫动画</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>使用指南</h4>
+        <ul>
+          <li><a href="#guide">选片方法</a></li>
+          <li><a href="#devices">设备支持</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#recommend">编辑推荐</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>温馨提示</h4>
+        <ul>
+          <li><a href="#guide">注意观看时长</a></li>
+          <li><a href="#faq">保护账号信息</a></li>
+          <li><a href="#faq">留意内容分级</a></li>
+          <li><a href="#devices">选择合适设备</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 91tv 影视导航 · 内容仅供浏览与参考</span>
+      <span>请合理安排观看时间，注意用眼与作息健康</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 移动端导航展开
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      mainNav.classList.toggle('show');
+    });
+    mainNav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        mainNav.classList.remove('show');
+      }
+    });
+  }
+
+  // FAQ 折叠
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    var answer = item.querySelector('.faq-a');
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      faqItems.forEach(function (other) {
+        other.classList.remove('open');
+        var a = other.querySelector('.faq-a');
+        if (a) a.style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+                                                   </html>
